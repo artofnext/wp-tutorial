@@ -17,8 +17,10 @@
 
       <?php
       $homepageEvents = new WP_Query(array(
-        'posts_per_page' => 2,
+        'posts_per_page' => -1,
         'post_type' => 'event',
+        'orderby' => 'title',
+        'order' => 'ASC',
       ));
 
       while ($homepageEvents->have_posts()) {
