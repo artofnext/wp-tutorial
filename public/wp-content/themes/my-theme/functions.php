@@ -19,3 +19,9 @@ add_action('wp_enqueue_scripts','university_files');
 
 add_action('after_setup_theme', 'universaty_features');
 
+function university_adjust_queries($query) {
+    $query->set('posts_per_page', '1');
+}
+
+add_action('pre_get_posts', 'university_adjust_queries');
+
