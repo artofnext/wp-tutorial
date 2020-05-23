@@ -8,7 +8,7 @@ function university_files() {
     wp_enqueue_style('university_main_styles', get_stylesheet_uri());
 }
 
-function universaty_features() {
+function university_features() {
     // register_nav_menu('headerMenuLocation', 'Header Menu Location');
     // register_nav_menu('footerMenuLocation1', 'Footer Menu Location 1');
     // register_nav_menu('footerMenuLocation2', 'Footer Menu Location 2');
@@ -21,7 +21,7 @@ function universaty_features() {
 
 add_action('wp_enqueue_scripts','university_files');
 
-add_action('after_setup_theme', 'universaty_features');
+add_action('after_setup_theme', 'university_features');
 
 function university_adjust_queries($query) {
     if(!is_admin() AND is_post_type_archive('program') AND $query->is_main_query()) {
