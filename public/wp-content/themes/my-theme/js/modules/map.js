@@ -1,6 +1,27 @@
-if (document.getElementById('mapid')) {
+const MAPDIV = 'mapid';
 
-    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+if (document.getElementById(MAPDIV)) {
+
+    let markersArr = [];
+
+    let markerNodeArr = document.getElementsByClassName('marker');
+
+    let centerLat = 0;
+    let centerLon = 0;
+
+    for (let i = 0; i < markerNodeArr.length; i++) {
+        let marker = new Object;
+        marker.lat = markerNodeArr[i].getAttribute('data-lat');
+        centerLat += +marker.lat;
+        marker.lon = markerNodeArr[i].getAttribute('data-lon');
+        centerLon += +marker.lon;
+        markersArr.push(marker);
+    }
+
+    centerLat /= markerNodeArr.length;
+    centerLon /= markerNodeArr.length;
+
+    var mymap = L.map(MAPDIV).setView([centerLat, centerLon], 13);
 
     // pk.eyJ1Ijoibm92YWxleCIsImEiOiJjazN1YWV6djMwNGFhM2x0ZDl4c2t6aXNwIn0.ullCD-2nWnR-RegQ_fi0vg
 
@@ -12,4 +33,11 @@ if (document.getElementById('mapid')) {
         zoomOffset: -1,
         accessToken: 'pk.eyJ1Ijoibm92YWxleCIsImEiOiJjazN1YWV6djMwNGFhM2x0ZDl4c2t6aXNwIn0.ullCD-2nWnR-RegQ_fi0vg'
     }).addTo(mymap);
+
+    
+    for (let i = 0; i < markersArr.length; i++) {
+    
+        let marker = L.marker([markersArr[i].lat, markersArr[i].lon]).addTo(mymap);
+    }
+
 }

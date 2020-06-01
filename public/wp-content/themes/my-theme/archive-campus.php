@@ -10,7 +10,7 @@ pageBanner(array(
 
 <div class="container container--narrow page-section">
 
-<div class="acf-map">
+<div class="acf-map" id="mapid">
 
 <?php
   while(have_posts()) {
@@ -19,7 +19,7 @@ pageBanner(array(
     
     ?>
 
-    <div class="maker" id="mapid" style="height: 200px;" data-lat="<?php echo $mapLocation['lat']; ?>" data-lon="<?php echo $mapLocation['lon']; ?>"></div>
+    <div class="marker" data-lat="<?php echo $mapLocation['lat']; ?>" data-lon="<?php echo $mapLocation['lon']; ?>"></div>
     
 
     <?php
