@@ -19,13 +19,17 @@ pageBanner(array(
     
     ?>
 
-    <div class="marker" data-lat="<?php echo $mapLocation['lat']; ?>" data-lon="<?php echo $mapLocation['lon']; ?>"></div>
+    <div class="marker" 
+    data-lat="<?php echo $mapLocation['lat']; ?>" 
+    data-lon="<?php echo $mapLocation['lon']; ?>"
+
+    data-title="<?php the_title(); ?>" 
+    >
+    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+    </div>
     
 
-    <?php
-  }
-  echo paginate_links();
-?>
+    <?php } ?>
 </div>
 
 </div>
