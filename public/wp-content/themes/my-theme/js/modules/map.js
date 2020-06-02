@@ -15,6 +15,12 @@ if (document.getElementById(MAPDIV)) {
         centerLat += +marker.lat;
         marker.lon = markerNodeArr[i].getAttribute('data-lon');
         centerLon += +marker.lon;
+
+        marker.title = markerNodeArr[i].getAttribute('data-title');
+
+        marker.html = markerNodeArr[i].innerHTML;
+        //marker.adress = markerNodeArr[i].getAttribute('data-adress');
+        
         markersArr.push(marker);
     }
 
@@ -38,6 +44,7 @@ if (document.getElementById(MAPDIV)) {
     for (let i = 0; i < markersArr.length; i++) {
     
         let marker = L.marker([markersArr[i].lat, markersArr[i].lon]).addTo(mymap);
+        marker.bindPopup(markersArr[i].html).openPopup();
     }
 
 }
