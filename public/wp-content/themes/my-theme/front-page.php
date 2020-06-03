@@ -10,8 +10,6 @@
   </div>
 </div>
 
-<div id="mapid" style="height: 200px;"></div>
-
 <div class="full-width-split group">
   <div class="full-width-split__one">
     <div class="full-width-split__inner">
