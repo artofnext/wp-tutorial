@@ -35,7 +35,7 @@ class Search {
                     this.resultsDiv.html('<div class="spinner-loader"></div>');
                     this.isSpinnerVisible = true;
                 }
-                this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
+                this.typingTimer = setTimeout(this.getResults.bind(this), 750);
             } else {
                 this.resultsDiv.html('');
                 this.isSpinnerVisible = false;
@@ -57,8 +57,7 @@ class Search {
     }
 
     keyPressDispatcher(e) {
-
-        if (e.keyCode == 83 && !this.isOverlayOpen && $("input, textarea").is(':focus')) {
+        if (e.keyCode == 83 && !this.isOverlayOpen && !$("input, textarea").is(':focus')) {
             this.openOverlay();
         }
 
@@ -70,6 +69,7 @@ class Search {
     openOverlay() {
         this.searchOverlay.addClass("search-overlay--active");
         $("body").addClass("body-no-scroll");
+        setTimeout(() => this.searchField.focus(), 301);
         //console.log("open run");
         this.isOverlayOpen = true;
     }
